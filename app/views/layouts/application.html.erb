@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Railsfuncart</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <h1>對外頁面：public</h1>
+    <div>購物車數量 <span class="cart_counter"><%= get_cart_count %></span></div>
+
+    <% if current_user %>
+      Hi!<%= current_user.email %>, <%= link_to "登出", destroy_user_session_path, method: "delete"  %>
+    <% else %>
+      <%= link_to "登入", new_user_session_path %>, <%= link_to "註冊",new_user_registration_path %>
+    <% end %>
+
+    <%= will_paginate @paginate if @paginate %>
+    <hr>
+    <%= yield %>
+    <hr>
+    <%= will_paginate @paginate if @paginate %>
+  </body>
+</html>

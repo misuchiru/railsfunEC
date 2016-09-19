@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>產品列表</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>名稱</th>
+      <th>類別</th>
+      <th>價格</th>
+      <th>圖片</th>
+      <th>管理</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name %></td>
+        <td><%= item.cate.name %></td>
+        <td><%= item.price %></td>
+        <td><%= image_tag item.cover.url(:medium) %></td>
+        <td>
+          <%= link_to '編輯', edit_dashboard_admin_item_path(item) %>
+          <%= link_to '刪除', dashboard_admin_item_path(item), method: :delete, data: {confirm: '是否確定刪除？'} %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_dashboard_admin_item_path %>

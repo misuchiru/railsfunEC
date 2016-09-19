@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>圖片</th>
+      <th>名稱</th>
+      <th>管理</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= image_tag item.cover.url(:thumb) %></td>
+        <td><%= item.name %>(<%= item.price %></td>
+        <td>加入購物車</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
